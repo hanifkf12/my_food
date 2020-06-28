@@ -33,19 +33,6 @@ class _DetailPageState extends State<DetailPage> {
               return Text(snapshot.error.toString());
             }
             return buildWidget(snapshot.data.meals[0], context);
-//          return SingleChildScrollView(
-//            child: StreamBuilder(
-//                stream: bloc.detailSubject,
-//                builder: (context, AsyncSnapshot<DetailMeal> snapshot){
-//                  if (snapshot.hasData) {
-//                    buildWidget(snapshot.data.meals[0], context);
-//                  } else if (snapshot.hasError) {
-//                    return Text(snapshot.error.toString());
-//                  }
-//                  return Center(child: CircularProgressIndicator());
-//                }
-//            ),
-//          );
           }),
     );
   }

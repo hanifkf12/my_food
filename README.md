@@ -9,7 +9,7 @@ Dengan aplikasi ini penggunan dapat mengikuti langkah-langkah dalam membuat sebu
 
 Aplikasi ini dikembangkan menggunakan FrameWork Flutter.
 
-Download Apk [Here](https://srv-file12.gofile.io/download/vEUhh5/app-release.apk)
+Download Apk [Here](https://github.com/hanifkf12/my_food/raw/master/assets/app-release.apk)
 
 ScreenShoot Aplikasi
 
