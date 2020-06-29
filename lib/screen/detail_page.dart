@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_food/bloc/food_bloc.dart';
-
-import 'model/detail_meals.dart';
-import 'model/meals.dart';
+import 'package:my_food/model/detail_meals.dart';
 
 class DetailPage extends StatefulWidget {
   String idMeal;
@@ -18,7 +15,13 @@ class _DetailPageState extends State<DetailPage> {
   @override
   void initState() {
     super.initState();
-    bloc.fetchDetailMeal(widget.idMeal);
+    bloc..fetchDetailMeal(widget.idMeal);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bloc..drainDetail();
   }
 
   @override

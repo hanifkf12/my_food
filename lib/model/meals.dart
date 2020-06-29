@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final meals = mealsFromJson(jsonString);
+
 import 'dart:convert';
 
 Meals mealsFromJson(String str) => Meals.fromJson(json.decode(str));
@@ -12,11 +16,11 @@ class Meals {
   List<Meal> meals;
 
   factory Meals.fromJson(Map<String, dynamic> json) => Meals(
-    meals: List<Meal>.from(json["meals"].map((x) => Meal.fromJson(x))),
+    meals: json["meals"] == null ? null : List<Meal>.from(json["meals"].map((x) => Meal.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "meals": List<dynamic>.from(meals.map((x) => x.toJson())),
+    "meals": meals == null ? null : List<dynamic>.from(meals.map((x) => x.toJson())),
   };
 }
 
@@ -32,14 +36,14 @@ class Meal {
   String idMeal;
 
   factory Meal.fromJson(Map<String, dynamic> json) => Meal(
-    strMeal: json["strMeal"],
-    strMealThumb: json["strMealThumb"],
-    idMeal: json["idMeal"],
+    strMeal: json["strMeal"] == null ? null : json["strMeal"],
+    strMealThumb: json["strMealThumb"] == null ? null : json["strMealThumb"],
+    idMeal: json["idMeal"] == null ? null : json["idMeal"],
   );
 
   Map<String, dynamic> toJson() => {
-    "strMeal": strMeal,
-    "strMealThumb": strMealThumb,
-    "idMeal": idMeal,
+    "strMeal": strMeal == null ? null : strMeal,
+    "strMealThumb": strMealThumb == null ? null : strMealThumb,
+    "idMeal": idMeal == null ? null : idMeal,
   };
 }

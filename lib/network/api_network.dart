@@ -12,6 +12,7 @@ class ApiNetwork {
   static const bySearch = 'search.php?s=';
   static const lookUp = 'lookup.php?i=';
 
+
   Future<DetailMeal> fetchDetailMeal(String strId) async {
     var response = await client.get(maiUrl + lookUp + strId);
     if (response.statusCode == 200) {
@@ -29,6 +30,19 @@ class ApiNetwork {
       return Meals.fromJson(json.decode(response.body));
     } else {
       throw Exception('Gagal Ambil Data');
+    }
+  }
+
+  Future<Meals> searchFoods(String param) async{
+    try{
+      var response = await client.get(maiUrl+bySearch+param);
+      if (response.statusCode == 200) {
+        return Meals.fromJson(json.decode(response.body));
+      } else {
+        throw Exception('Gagal Ambil Data');
+      }
+    }catch(err){
+      throw Exception(err);
     }
   }
 }

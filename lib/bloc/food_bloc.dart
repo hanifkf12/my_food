@@ -10,6 +10,10 @@ class FoodBloc {
 
   BehaviorSubject<Meals> get subject => _subject;
 
+  BehaviorSubject<Meals> _searchSubject = BehaviorSubject<Meals>();
+
+  BehaviorSubject<Meals> get searchSubject => _searchSubject;
+
   BehaviorSubject<DetailMeal> _detailSubject = BehaviorSubject<DetailMeal>();
 
   BehaviorSubject<DetailMeal> get detailSubject => _detailSubject;
@@ -19,14 +23,34 @@ class FoodBloc {
     _subject.sink.add(_meals);
   }
 
+  searchFoods(String param) async{
+    Meals _meals = await _repository.searchFoods(param);
+    _searchSubject.sink.add(_meals);
+  }
+
   fetchDetailMeal(String strId) async {
     DetailMeal food = await _repository.fetchDetailMeal(strId);
     _detailSubject.sink.add(food);
+  }
+  drainDetail(){
+    _detailSubject.value = null;
+    _detailSubject.drain();
+  }
+
+  drainSearch(){
+    _searchSubject.value = null;
+    _searchSubject.drain();
+  }
+
+  drainAllMeals(){
+    _subject.value = null;
+    _detailSubject.drain();
   }
 
   dispose() {
     _subject.close();
     _detailSubject.close();
+    _searchSubject.close();
   }
 }
 
